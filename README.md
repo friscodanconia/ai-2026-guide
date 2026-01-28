@@ -37,14 +37,21 @@ This project delivers:
 12. **Skills** - Capabilities needed to thrive
 13. **Conclusion** - Your AI journey
 
+## 🌐 Live Deployment
+
+- **Production URL**: https://aibasics-dkuuir0sn-soumyos-projects.vercel.app
+- **Custom Domain**: kimiai.soumyosinha.com (pending DNS configuration)
+- **GitHub Repository**: https://github.com/friscodanconia/ai-2026-guide
+
 ## 📁 Project Structure
 
 ```
-/scratchpad/
-├── index.html              # Main HTML file
+/
+├── index.html              # Main HTML file with full content
 ├── styles.css              # Complete styling with animations
 ├── script.js               # Interactive JavaScript functionality
 ├── ai-comprehensive-guide.md  # Full content (downloadable)
+├── vercel.json             # Vercel deployment configuration
 └── README.md               # This file
 ```
 
