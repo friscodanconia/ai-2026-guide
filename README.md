@@ -39,9 +39,26 @@ This project delivers:
 
 ## 🌐 Live Deployment
 
-- **Production URL**: https://aibasics-dkuuir0sn-soumyos-projects.vercel.app
-- **Custom Domain**: kimiai.soumyosinha.com (pending DNS configuration)
+- **Primary URL**: https://aibasics.vercel.app ✅
+- **Custom Domain**: kimiai.soumyosinha.com (pending DNS configuration - see below)
 - **GitHub Repository**: https://github.com/friscodanconia/ai-2026-guide
+
+### Configure Custom Domain (kimiai.soumyosinha.com)
+
+To make your site live at **kimiai.soumyosinha.com**, add these DNS records to your domain registrar:
+
+1. **Go to your domain DNS settings** (where soumyosinha.com is hosted)
+2. **Add a CNAME record**:
+   ```
+   Type: CNAME
+   Name: kimiai
+   Value: cname.vercel-dns.com
+   TTL: 3600 (or Auto)
+   ```
+3. **Wait for DNS propagation** (5-60 minutes)
+4. **Verify in Vercel Dashboard**: https://vercel.com/soumyos-projects/aibasics/settings/domains
+
+Once DNS is configured, your site will be accessible at **kimiai.soumyosinha.com**!
 
 ## 📁 Project Structure
 
