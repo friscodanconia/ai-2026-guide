@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""Create a visually enhanced website with icons, graphics, and better layout."""
+
+import re
+
+# Read the markdown file
+with open('ai-comprehensive-guide.md', 'r', encoding='utf-8') as f:
+    md_content = f.read()
+
+# HTML template with enhanced visuals
+html_template = '''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -362,4 +372,18 @@
         lucide.createIcons();
     </script>
 </body>
-</html>
+</html>'''
+
+# Write the new visual HTML file
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_template)
+
+print("✅ Visual website created!")
+print("🎨 Added features:")
+print("   - Lucide icon library")
+print("   - Visual timeline for chapters")
+print("   - Feature cards with icons")
+print("   - Better visual hierarchy")
+print("   - CTA banners")
+print("   - Icon-enhanced navigation")
+print("\n🌐 View at: http://localhost:8000")
