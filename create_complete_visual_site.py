@@ -10,12 +10,12 @@ with open('ai-comprehensive-guide.md', 'r', encoding='utf-8') as f:
 
 def md_to_html(text):
     """Convert markdown to HTML with visual enhancements."""
-    # Headers
+    # First convert bold BEFORE processing lines
+    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\g<1></strong>', text)
+
+    # Then process headers
     text = re.sub(r'^#### (.*?)$', r'<h4>\g<1></h4>', text, flags=re.MULTILINE)
     text = re.sub(r'^### (.*?)$', r'<h3>\g<1></h3>', text, flags=re.MULTILINE)
-
-    # Bold
-    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\g<1></strong>', text)
 
     # Lists - handle bullet points
     lines = text.split('\n')
@@ -25,22 +25,32 @@ def md_to_html(text):
     for line in lines:
         stripped = line.strip()
 
+        # Skip empty lines
+        if not stripped:
+            if in_list:
+                result.append('</ul>')
+                in_list = False
+            result.append('')
+            continue
+
         # Check if line starts with a dash (list item)
         if stripped.startswith('- '):
             if not in_list:
                 result.append('<ul>')
                 in_list = True
+            # Don't wrap list item content in <p> tags
             result.append(f'<li>{stripped[2:]}</li>')
         else:
             if in_list:
                 result.append('</ul>')
                 in_list = False
 
-            # Check for headers or already formatted HTML
-            if stripped and not stripped.startswith('<') and not stripped.startswith('#'):
-                result.append(f'<p>{stripped}</p>')
-            elif stripped:
+            # Check for already formatted HTML
+            if stripped.startswith('<h') or stripped.startswith('</'):
                 result.append(stripped)
+            elif stripped:
+                # Wrap non-header, non-list content in paragraphs
+                result.append(f'<p>{stripped}</p>')
 
     if in_list:
         result.append('</ul>')
