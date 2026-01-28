@@ -11,11 +11,11 @@ with open('ai-comprehensive-guide.md', 'r', encoding='utf-8') as f:
 def md_to_html(text):
     """Convert markdown to HTML with visual enhancements."""
     # Headers
-    text = re.sub(r'^#### (.*?)$', r'<h4>\\1</h4>', text, flags=re.MULTILINE)
-    text = re.sub(r'^### (.*?)$', r'<h3>\\1</h3>', text, flags=re.MULTILINE)
+    text = re.sub(r'^#### (.*?)$', r'<h4>\g<1></h4>', text, flags=re.MULTILINE)
+    text = re.sub(r'^### (.*?)$', r'<h3>\g<1></h3>', text, flags=re.MULTILINE)
 
     # Bold
-    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\\1</strong>', text)
+    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\g<1></strong>', text)
 
     # Lists - handle bullet points
     lines = text.split('\n')
